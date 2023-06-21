@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2023-06-21
+  photo: MyString
+  address: MyString
+  is_admin: false
+
+two:
+  name: MyString
+  dob: 2023-06-21
+  photo: MyString
+  address: MyString
+  is_admin: false
