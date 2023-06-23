@@ -21,15 +21,17 @@
     <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <% if user.new_record? %>
+    <div class="my-5">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="my-5">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+  <% end %>
 
   <div class="my-5">
     <%= form.label :dob %>
@@ -55,6 +57,8 @@
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    <%= link_to 'Back', logged_in? ? users_path : root_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <% if user.new_record? %>  
+      <%= link_to 'Back', logged_in? ? users_path : root_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <% end %>
   </div>
 <% end %>
