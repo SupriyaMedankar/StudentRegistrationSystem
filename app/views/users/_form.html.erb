@@ -17,26 +17,44 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :dob %>
     <%= form.date_field :dob, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :photo %>
-    <%= form.text_field :photo, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :photo, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :address %>
     <%= form.text_field :address, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
-  <div class="my-5">
-    <%= form.label :is_admin %>
-    <%= form.check_box :is_admin, class: "block mt-2 h-5 w-5" %>
-  </div>
+  
+  <% if logged_in? && admin_user? %>
+    <div class="my-5">
+      <%= form.label :activate %>
+      <%= form.check_box :active, class: "block mt-2 h-5 w-5" %>
+    </div>
+  <% end %>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= link_to 'Back', logged_in? ? users_path : root_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   </div>
 <% end %>

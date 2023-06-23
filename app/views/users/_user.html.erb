@@ -1,4 +1,10 @@
 <div id="<%= dom_id user %>">
+  <%if user.photo.present? %>
+    <p class="my-5">
+      <%= image_tag user.photo, height: '40px', width: '40px' %>
+    </p>
+  <% end %>
+
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= user.name %>
@@ -10,23 +16,13 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Photo:</strong>
-    <%= user.photo %>
-  </p>
-
-  <p class="my-5">
     <strong class="block font-medium mb-1">Address:</strong>
     <%= user.address %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Is admin:</strong>
-    <%= user.is_admin %>
-  </p>
-
   <% if action_name != "show" %>
-    <%= link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show", user, class: "rounded-lg py-3 px-5 bg-gray-200 inline-block font-medium" %>
+    <%= link_to 'Edit', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-200 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

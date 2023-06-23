@@ -1,4 +1,18 @@
 <div>
-  <h1 class="font-bold text-4xl">Sessions#login</h1>
-  <p>Find me in app/views/sessions/login.html.erb</p>
+<% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <h1 class="font-bold text-4xl">Login</h1>
+  <%= form_tag '/login' do %>
+    <div class="my-5">
+      Email: <%= text_field_tag :email %>
+    </div>
+    <div class="my-5">
+      Password: <%= password_field_tag :password %>
+    </div>
+    <div class="my-5">
+      <%= submit_tag 'Log In', class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= link_to 'Back', root_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+  <% end %>
 </div>

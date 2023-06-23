@@ -12,8 +12,15 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <%if current_user.present? %>
+        <div>
+          <%= button_to 'Logout', '/logout', method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        </div>
+      <% end %>
+      <div>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

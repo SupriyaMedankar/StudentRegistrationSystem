@@ -3,10 +3,15 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Users</h1>
-    <%= link_to 'New user', new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="flex flex-row items-center">
+    <h1 class="font-bold text-4xl basis-1/2">Users</h1>
+    <%= link_to 'New user', new_user_path, class: "basis-1/4 rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to 'Export', export_users_path, remote: true, class: "basis-1/4 rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
+
+  <div class='mb-5'>
+    <%= render 'import' %>
+  </div
 
   <div id="users" class="min-w-full">
     <%= render @users %>
