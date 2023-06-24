@@ -1,5 +1,5 @@
-task :birthday_wish do
-    SendBirthdayWishesJob.perform_in(1.minute)
+task birthday_wish: :environment do
+    SendBirthdayWishesJob.perform_now
 
     puts 'Birthday messages sent'
 end

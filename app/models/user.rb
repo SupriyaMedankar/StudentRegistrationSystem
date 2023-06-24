@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password_confirmation, presence: true, if: :password_digest_changed?
   validates :dob, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 4, maximum: 254 }  
   validates :address, presence: true
