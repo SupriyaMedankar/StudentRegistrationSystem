@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: :password_digest_changed?
-  validates :dob, presence: true
+  validates :dob, presence: true, comparison: { less_than: Date.today.advance(years: -3) }
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 4, maximum: 254 }  
   validates :address, presence: true
 
