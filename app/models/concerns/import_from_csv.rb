@@ -5,11 +5,14 @@ module ImportFromCsv
 
   class_methods do
     def import_from_csv(file)
+      items = []
       CSV.foreach(file, headers: true) do |row|
-        data = row.to_hash
-        data = { 'password_confirmation' => data['password'], 'active' => false }.merge(data)
-        User.where(email: data[:email]).first_or_create(data)
+        row = row.to_hash
+        row['password_confirmation'] ||= row['password']
+        items << new(row)
       end
+
+      import(items, batch_size: 1000, validate: true, validate_uniqueness: true)
     end
   end
 end
